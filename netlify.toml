@@ -1,0 +1,15 @@
+# 저장소 루트 Netlify 설정
+# 실제 프로젝트가 하위 폴더(anatomylab-3d/)에 있으므로 base 로 지정합니다.
+# Netlify는 base 로 이동해 build 를 실행하고, 그 안의 dist 를 게시합니다.
+# (GitHub 연결 배포 시 별도 UI 설정 없이 이 파일만으로 동작)
+
+[build]
+  base = "anatomylab-3d"
+  command = "npm run build"
+  publish = "dist"
+
+# SPA 라우팅: 모든 경로를 index.html 로 (새로고침 404 방지)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
