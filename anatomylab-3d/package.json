@@ -1,0 +1,18 @@
+{
+  "name": "anatomylab-3d",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "AnatomyLab 3D — 인체 해부 레이어 뷰어 · AI 튜터 · 발음 학습",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "three": "^0.160.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

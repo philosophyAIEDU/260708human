@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AnatomyLab 3D — 인체 해부 레이어 3D 뷰어, IPA 발음 학습, AI 해부학 교수, 플래시카드/퀴즈" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫀</text></svg>" />
+    <title>AnatomyLab 3D — 인체 해부 레이어 뷰어</title>
+  </head>
+  <body>
+    <!-- 로딩 인디케이터 -->
+    <div id="loader" class="loader">
+      <div class="loader-spinner"></div>
+      <div class="loader-text">AnatomyLab 3D 로딩 중…</div>
+    </div>
+
+    <!-- 상단 바 -->
+    <header id="topbar" class="topbar">
+      <div class="brand">
+        <span class="brand-mark">🫀</span>
+        <span class="brand-title">AnatomyLab&nbsp;3D</span>
+        <span class="brand-sub" data-i18n="app.subtitle">인체 해부 레이어 뷰어</span>
+      </div>
+      <nav class="mode-tabs" id="modeTabs">
+        <button class="mode-tab active" data-mode="explore" data-i18n="mode.explore">탐색</button>
+        <button class="mode-tab" data-mode="flashcards" data-i18n="mode.flashcards">암기</button>
+        <button class="mode-tab" data-mode="quiz" data-i18n="mode.quiz">퀴즈</button>
+      </nav>
+      <div class="topbar-right">
+        <button id="aiToggleBtn" class="ghost-btn" title="AI 교수" data-i18n="ai.open">🎓 AI 교수</button>
+        <div class="lang-toggle" id="langToggle">
+          <button class="lang-btn active" data-lang="ko">한국어</button>
+          <button class="lang-btn" data-lang="en">English</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 3D 캔버스 -->
+    <main id="stage" class="stage">
+      <canvas id="scene-canvas"></canvas>
+
+      <!-- 호버 툴팁 -->
+      <div id="tooltip" class="tooltip" hidden></div>
+
+      <!-- 좌측 레이어 패널 -->
+      <aside id="layerPanel" class="panel layer-panel">
+        <h2 class="panel-title" data-i18n="layers.title">해부 레이어</h2>
+        <div id="layerToggles" class="layer-toggles"></div>
+        <div class="depth-control">
+          <label class="depth-label" data-i18n="layers.depth">깊이 (바깥 → 안)</label>
+          <input id="depthSlider" class="depth-slider" type="range" min="0" max="4" step="0.01" value="0" />
+          <div class="depth-hint" data-i18n="layers.depthHint">슬라이더를 밀면 바깥 레이어가 스르륵 벗겨집니다.</div>
+        </div>
+        <button id="resetViewBtn" class="ghost-btn full" data-i18n="layers.reset">시점 초기화</button>
+      </aside>
+
+      <!-- 우측 정보 패널 -->
+      <aside id="infoPanel" class="panel info-panel" hidden></aside>
+
+      <!-- 조작 안내(첫 진입) -->
+      <div id="introHint" class="intro-hint" hidden></div>
+    </main>
+
+    <!-- 암기/퀴즈 오버레이 컨테이너 -->
+    <section id="flashcardsRoot" class="overlay" hidden></section>
+    <section id="quizRoot" class="overlay" hidden></section>
+
+    <!-- AI 교수 패널 -->
+    <aside id="aiPanel" class="ai-panel" hidden></aside>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
